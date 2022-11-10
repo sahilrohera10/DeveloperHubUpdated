@@ -91,9 +91,9 @@ const Itsoftform = () => {
         setType(event.target.value);
       };
       const handleNext = () => {
-        if (type) {
+     
           setIsVisible(isVisible + 1);
-        }
+        
       };
     
       const handleBack = () => {
@@ -181,15 +181,84 @@ const Itsoftform = () => {
       const [personName2, setPersonName2] = React.useState([]);
   return (
     <div className="formMainDiv">
-    <div className='univ_container'>
-    <div>
-            <h1 className="ItHead">{type}</h1>
-            <div className="container-form">
-              {/* <div className="title">Registration</div> */}
-              <div className="content">
-                <form action="#">
-                  <div className="user-details">
-                    <div className="input-box">
+    <div className='IT_container'>
+      <div className="soft_heading">
+      IT-Software
+      </div>
+      {isVisible===1 ? (<>
+        <div style={{ marginTop: "20px" }}>
+            <TextField
+              id="outlined-basic"
+              label="Name"
+              variant="outlined"
+              value={name}
+              style={{
+                marginRight: "50px",
+                width: "250px",
+                marginBottom: "20px",
+              }}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              style={{ width: "250px" }}
+            />
+          </div>
+          <div style={{ marginTop: "20px" }}>
+            <TextField
+              id="outlined-basic"
+              label="Phone"
+              variant="outlined"
+              // value={name}
+              // onChange={(e) => setName(e.target.value)}
+              style={{
+                marginRight: "50px",
+                width: "250px",
+                marginBottom: "20px",
+              }}
+            />
+            <TextField
+              id="outlined-basic"
+              label="City"
+              variant="outlined"
+              style={{ width: "250px" }}
+            />
+          </div>
+          <div style={{ marginTop: "20px" }}>
+            <TextField
+              id="outlined-basic"
+              label="State"
+              variant="outlined"
+              // value={name}
+              // onChange={(e) => setName(e.target.value)}
+              style={{
+                marginRight: "50px",
+                width: "250px",
+                marginBottom: "20px",
+              }}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Country"
+              variant="outlined"
+              style={{ width: "250px" }}
+            />
+          </div>
+          <div className="btnDiv1">
+            <Button
+              style={{ width: "200px", marginBottom: "20px" }}
+              variant="contained"
+              onClick={() => handleNext()}
+            >
+              Ok & Next
+            </Button>
+          </div>
+      </>):<></>}
+      {isVisible===2?(<>
+             <div className='IT_form_container'>
+              <div className="input_box">
+             <div className="input-box1">
                       <FormControl sx={{ minWidth: 300, marginTop: 1 }}>
                         <InputLabel id="demo-controlled-open-select-label">
                           Pre-requisite
@@ -211,8 +280,6 @@ const Itsoftform = () => {
                           <MenuItem value="none">None</MenuItem>
                         </Select>
                       </FormControl>
-                    </div>
-                    <div className="input-box">
                       <FormControl sx={{ width: 300, marginTop: 1 }}>
                         <InputLabel id="demo-multiple-chip-label">
                           Course
@@ -256,7 +323,7 @@ const Itsoftform = () => {
                         </Select>
                       </FormControl>
                     </div>
-                    <div className="input-box">
+                    <div className="input-box1">
                       <FormControl sx={{ minWidth: 300, marginTop: 1 }}>
                         <InputLabel id="demo-controlled-open-select-label">
                           Training Mode
@@ -276,8 +343,7 @@ const Itsoftform = () => {
                           <MenuItem value="Offline">Offline</MenuItem>
                         </Select>
                       </FormControl>
-                    </div>
-                    <div className="input-box">
+                  
                       <FormControl sx={{ minWidth: 300, marginTop: 1 }}>
                         <InputLabel id="demo-controlled-open-select-label">
                           Project Type
@@ -298,7 +364,7 @@ const Itsoftform = () => {
                         </Select>
                       </FormControl>
                     </div>
-                    <div className="input-box">
+                    <div className="input-box1">
                       <FormControl sx={{ width: 300, marginTop: 1 }}>
                         <InputLabel id="demo-multiple-name-label">
                           Training-Media
@@ -323,8 +389,7 @@ const Itsoftform = () => {
                           ))}
                         </Select>
                       </FormControl>
-                    </div>
-                    <div className="input-box">
+               
                       <FormControl sx={{ minWidth: 300, marginTop: 1 }}>
                         <InputLabel id="demo-controlled-open-select-label">
                           Active Awareness
@@ -345,7 +410,6 @@ const Itsoftform = () => {
                         </Select>
                       </FormControl>
                     </div>
-                  </div>
                   <div className="gender-details">
                     <div className="category">
                       <div className="gender-title">
@@ -357,13 +421,13 @@ const Itsoftform = () => {
                         <FormControl>
                           <RadioGroup>
                             <FormControlLabel
-                              value="female"
+                              value="yes"
                               onClick={handleClickOpen}
                               control={<Radio />}
                               label="Yes"
                             />
                             <FormControlLabel
-                              value="male"
+                              value="no"
                               control={<Radio />}
                               label="No"
                             />
@@ -417,12 +481,7 @@ const Itsoftform = () => {
                       </Dialog>
                     </div>
                   </div>
-
-                  {/* <div className="button">
-                    <input type="button" defaultValue="Ok & Next" />
-                  </div> */}
-                </form>
-              </div>
+                  </div>
               <div className="btnDiv">
                 <Button
                   style={{ width: "200px", marginBottom: "20px" }}
@@ -436,12 +495,58 @@ const Itsoftform = () => {
                   variant="contained"
                   onClick={() => handleNext()}
                 >
-                  Ok & Next
+                  Next
                 </Button>
               </div>
-            </div>
           </div>
+            
+      </>):(<></>)}
+
+      {isVisible===3?(<> <div>
+              <h2>{type}</h2>
+              <TextField id="outlined-basic" label="OTP" variant="outlined" />
+              <Button variant="contained" className="otpBtn">
+                Send Otp
+              </Button>
+              <ReCAPTCHA
+                style={{ marginTop: "40px" }}
+                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                onChange={onChange}
+              />
+              <div style={{ display: "flex", marginTop: "30px" }}>
+                <Checkbox {...label} /> <p style={{ marginTop: "9px" }}>T&C</p>
+                <Checkbox {...label} />{" "}
+                <p style={{ marginTop: "9px" }}>Data Privacy</p>
+                <Checkbox {...label} />{" "}
+                <p style={{ marginTop: "9px" }}>Cross Promotions</p>
+              </div>
+              <div className="btnDiv">
+                <Button
+                  style={{ width: "100px" }}
+                  variant="contained"
+                  onClick={() => handleBack()}
+                >
+                  Back
+                </Button>
+                <Button
+                  style={{ width: "100px" }}
+                  variant="contained"
+                  onClick={() => handleNext()}
+                >
+                  Submit
+                </Button>
+              </div>
+            </div></>):isVisible===4?(<>
+            <div className="thankupage">
+              <i><b>Thank you for signing up !</b></i>
+              <span> Please check your email for all further details it will recieve within 24 hours.</span>
+            </div>
+            </>):(<></>)}
+      
     </div>
+    <div className="form_img">
+    <img className="rightImg" src="RegisterImg.png" alt="img" />
+  </div>
     </div>
   )
 }
