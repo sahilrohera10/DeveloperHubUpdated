@@ -1,0 +1,39 @@
+.Basic_container{
+    width: 100%;
+    background-color: #0d0628;
+    margin-top: 8rem;
+    z-index: -1;
+    height: auto;
+  }
+  .Basic_main{
+  padding: 0.5rem 1.3rem;
+  margin: 0 5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  
+  }
+  .F_cards{
+    /* border:1px solid #0d0628; */
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  
+  }
+  .F_card1,.F_card2,.F_card3,.F_card4,.F_card5{
+    border: 1px solid #0d0628;
+    padding: 4rem;
+    margin: 1rem;
+    border-radius: 12px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    cursor: pointer;
+   
+  }
+  .basic_headline{
+    font-size: 28px;
+    padding: 0.8rem;
+  }

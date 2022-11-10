@@ -1,0 +1,18 @@
+@media screen and (max-width : 376px) {
+  .blog-card{
+    width: 85vw;
+  }
+  .blog-header{
+    font-size: 1.7rem;
+  }
+  
+}
+@media screen and (max-width : 321px) {
+  .blog-card{
+    width: 85vw;
+  }
+  .blog-header{
+    font-size: 1.7rem;
+  }
+  
+}

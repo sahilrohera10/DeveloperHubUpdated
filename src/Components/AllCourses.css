@@ -1,0 +1,137 @@
+.AllCourses{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+}
+.Card_Div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    /* margin-left: 70px; */
+    /* margin-top: 20px; */
+    margin-bottom: 100px;
+    gap: 2rem;
+    
+}
+
+
+.animate-charcter
+{
+  text-align: center;
+  width: 98vw;
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 60px;
+      font-weight: 600;
+      /* margin-bottom: 10px; */
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@media screen and (max-width : 750px) {
+
+  .Card_Div{
+    /* display: flex;
+    justify-content: space-around; */
+    /* width: 90%; */
+    margin-left: 40px;
+    /* margin-top: 50px; */
+    
+}
+
+}
+@media screen and (max-width : 700px) {
+
+  .Card_Div{
+    /* display: flex;
+    justify-content: space-around; */
+    width: 95%;
+    margin-left: 20px;
+    /* margin-top: 50px; */
+    
+}
+
+}
+@media screen and (max-width : 600px) {
+
+  .Card_Div{
+    /* display: flex;
+    justify-content: space-around; */
+    width: 95%;
+    margin-left: 0px;
+    /* margin-top: 50px; */
+    
+}
+
+  
+}
+@media screen and (max-width : 426px) {
+
+  .Card_Div{
+
+    margin-left: 10px;
+    
+}
+
+
+.animate-charcter{
+  width : 100vw;
+  font-size: 35px;
+}
+  
+  
+}
+@media screen and (max-width : 376px) {
+
+  .Card_Div{
+
+    margin-left: -8px;
+    
+}
+
+.animate-charcter{
+  width : 100vw;
+  font-size: 35px;
+}
+  
+}
+
+@media screen and (max-width : 320px) {
+  .animate-charcter{
+    width : 100vw;
+    font-size: 35px;
+  }
+
+  .Card_Div{
+    margin-left: 0px;
+  }
+
+  
+}
+
+
+
+

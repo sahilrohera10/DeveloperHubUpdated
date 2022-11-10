@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,600;0,700;0,800;1,600;1,700;1,800&family=Rubik+Moonrocks&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Hahmlet', serif;
+ 
+}
+.navbar{
+    margin-top: -10px;
+    margin-bottom: -10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Hahmlet', serif;
+    margin-left: 80px;
+    margin-right: 60px;
+ 
+    /* z-index: -1; */
+
+}
+
+.navbar a{
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    font-family: 'Hahmlet', serif;
+
+}
+a:hover{
+    color: rgb(239, 67, 207);
+}
+.scroll{
+    margin-bottom:1px;
+    background:#0d0628;
+    
+}
+.Navbar{
+
+   color:white;
+  text-align: center;
+  z-index: 100;
+}
+logo{
+    color:rgb(239, 67, 207);
+    height: 100px;
+}
+header{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../assets/background.gif") no-repeat,center center fixed;
+    background-size: cover;
+    height: 120vh;
+    margin-top: -105px;
+}
+hero{
+    margin:auto;
+    color:white;
+    margin:auto;
+}
+h1{
+    color:rgb(239, 67, 207);
+}
+.container-new{
+    display: flex;
+    flex-direction: left;
+    margin-left: 65px;
+}
+/* .button{
+    border-radius: 550px;
+} */
+
+.Navbar_Brand logo{
+    font-size: 28px;
+    margin-right:5px;
+}
+.Navbar_Brand logoname{
+    font-size: 28px;
+    font-family: 'Hahmlet', serif;
+
+}
+.lead{
+    margin-top: 20px;
+    width: 20rem;
+    display: inline-block;
+    position: absolute;
+    top:30%;
+}
+.title{
+    font-size: 60px;
+    font-weight: 800;
+}
+.header-btn{
+    border-radius: 50px;
+    margin-right: 550px;
+}
+.navcontent{
+    font-size: 22px;   
+   
+}
+.navcontent .navdrop{
+    font-size: large;
+    font-family: 'Hahmlet', serif;
+
+}
+#collasible-nav-dropdown{
+    color: white;
+    display: inline;
+    position: relative;
+    top:10%;
+    font-size: large;
+    /* font-family: 'Hahmlet', serif; */
+
+}
+.navcontent .navdrop{
+    color:white;
+    font-size: 22px;
+}
+
+#collasible-nav-dropdown:hover{
+    color: rgb(239, 67, 207);
+}
+.typeAnimation{
+        font-size: 68px;
+        color: rgb(239, 67, 207);
+        font-weight: 700;
+}
+
+.header-content-div{
+    margin-top: 300px;
+}
+
+
+
+
+@media (max-width: 994px){
+  
+    header{
+        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../assets/background.gif") no-repeat center center;
+        background-size: cover;
+        height: 70vh;
+        margin-top: 5px;
+    }
+    .hero-container{
+        margin-left: -10px;
+        
+        
+    }
+    .lead{
+        
+        margin-left:-50px;
+    }
+    .title{
+        font-size: 50px;
+    }
+    
+   #responsive-navbar-nav{
+         display: block;
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+        position: absolute;
+        top: 75%;
+        background: rgb(13, 6, 40);
+        width: 95%;
+        padding: 10px;
+        z-index: 100;
+    }
+
+    .header-content-div{
+        margin-top: 150px;
+    }
+    .herodata{
+        position:absolute;
+        top: 30%;
+    }
+    .navbar{
+        margin:0px;
+        margin-right:0px
+    }
+  .typeAnimation{
+    margin-left: -50px;
+  }
+
+}
+@media screen and (max-width : 500px) {
+
+    .typeAnimation{
+        font-size: 58px;
+       
+}
+.header-content-div{
+    margin-top: 100px;
+}
+.header-content-div{
+    margin-top: 180px;
+}
+.herodata{
+    position:absolute;
+    top: 30%;
+}
+}
+@media screen and (max-width : 376px) {
+    header{
+        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../assets/background.gif") no-repeat center center;
+        background-size: cover;
+        height: 70vh;
+        width: 375px;
+        margin-top: 5px;
+    }
+    .hero-container{
+        margin-left: -20px;
+        
+    }
+    .lead{
+        text-align: left;
+        margin-left: -85px;
+    }
+    .title{
+        font-size: 40px;
+    }
+    .typeAnimation{
+        font-size: 48px;
+        margin-left: -80px;
+
+        
+    }
+    .navbar{
+        margin:0px;
+        margin-right:50px
+    }
+    /* .header-content-div{
+        margin-top: 150px;
+    } */
+    .herodata{
+        position:absolute;
+        top: 30%;
+    }
+    
+}
+@media (min-width:250px) and (max-width: 321px) {
+   
+    header{
+        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../assets/background.gif") no-repeat center center;
+        background-size: cover;
+        height: 70vh;
+        width: 323px;
+        margin-top: 5px;
+    }
+   
+}
+
+@media( min-width:992px) and (max-width : 11492px) {
+
+    .Navbar{
+        display: block;
+        margin:0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: center;
+    
+
+    }
+    .lead{
+        margin-top: 50px;;
+    }
+    .navbar{
+        margin-top: 1px;
+        margin-bottom: -2px;
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Hahmlet', serif;
+        margin-left: 80px;
+        margin-right: 60px;
+        padding: 10px;
+     
+        /* z-index: -1; */
+    
+    }
+   
+   
+   
+}

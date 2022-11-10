@@ -1,0 +1,19 @@
+/* .univ_container,.IT_container,.Fresher_container,.Channel_container,.Trainer_container{
+    width: 100%;
+    margin-top: 8rem;
+    z-index: -1;
+    height: auto;
+   
+} */
+.formMainDiv{
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 150px;
+    min-height: 400px;
+    max-height: auto;
+    padding: 20px;
+    background-color: #f7f5f5;
+    border-radius: 20px;
+    margin-bottom: 100px;
+
+}
