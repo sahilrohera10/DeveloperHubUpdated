@@ -1,0 +1,80 @@
+const { ObjectId } = require("mongodb");
+const mongoose = require("mongoose");
+const universitySchema=mongoose.Schema({
+    userMetaId:{
+        type:ObjectId
+    },
+    UniversityName:{ 
+        type:String,
+        
+    },
+    UniversityEmail:{ 
+        type:String,
+    },
+    UniversityPhone:{ 
+        type:Number,
+    },
+    CnName:{
+        type:Object,
+    },
+    ReposManagerName:{
+        type:String,
+    },
+    ReposManagerEmail:{
+        type:String,
+    },
+    ReposManagerDesignation:{
+        type:String,
+    },
+    ReposManagerContactNo:{
+        type:Number,
+    },
+    ReposManagerDepartment:{
+        type:String,
+    },
+    TraineeQualification:{
+        type:String,
+    },
+    TotalTraineeNo:{
+        type:Number,
+    },
+    startDate:{
+        type:Date,
+    },
+    endDate:{
+        type:Date,
+    },
+    PreRequisite:{
+        type:String
+    },
+    trainTheTrainer:{
+        type:String,
+    },
+    Courses:{
+        type:[String]
+    },
+    TrainingMode:{
+        type:String
+    },
+    ProjectType:{
+        type:String
+    },
+    TrainingMedia:{
+        type:[Array]
+    },
+    ActivateAwareness:{
+        type:Boolean
+    },
+    Certification:{
+        type:Boolean
+    },
+    PanImage:{
+        type:String
+    },
+    AadharImage:{
+        type:String
+    },
+    
+},{timestamps:true});
+
+module.exports = mongoose.model("UniversityModel", universitySchema);
