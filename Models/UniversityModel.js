@@ -6,16 +6,20 @@ const universitySchema=mongoose.Schema({
     },
     UniversityName:{ 
         type:String,
-        
+
     },
-    UniversityEmail:{ 
-        type:String,
-    },
+   
     UniversityPhone:{ 
         type:Number,
     },
-    CnName:{
-        type:Object,
+    City:{
+        type:String,
+    },
+    State:{
+        type:String,
+    },
+    Country:{
+        type:String,
     },
     ReposManagerName:{
         type:String,
@@ -39,17 +43,17 @@ const universitySchema=mongoose.Schema({
         type:Number,
     },
     startDate:{
-        type:Date,
+        type:String,
     },
     endDate:{
-        type:Date,
+        type:String,
     },
     PreRequisite:{
         type:String
     },
-    trainTheTrainer:{
-        type:String,
-    },
+    // trainTheTrainer:{
+    //     type:String,
+    // },
     Courses:{
         type:[String]
     },
@@ -60,7 +64,7 @@ const universitySchema=mongoose.Schema({
         type:String
     },
     TrainingMedia:{
-        type:[Array]
+        type:[String]
     },
     ActivateAwareness:{
         type:Boolean

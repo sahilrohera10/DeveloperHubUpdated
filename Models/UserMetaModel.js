@@ -1,15 +1,10 @@
 const mongoose = require("mongoose");
 const { ObjectId } = require('mongodb');
-const registrationSchema=mongoose.Schema({
-    Name:{
-        type:String
-    },
-    Phone:{
-        type:Number
-    },
+const userMetaSchema=mongoose.Schema({
+   
   
-    emailId:{
-        tyoe:String
+    email:{
+        type:String
     },
     userName:{
         type:String
@@ -22,4 +17,4 @@ const registrationSchema=mongoose.Schema({
     // }
 },{timestamps:true});
 
-module.exports = mongoose.model("RegisterModel", registrationSchema);
+module.exports = mongoose.model("UserMetaModel", userMetaSchema);

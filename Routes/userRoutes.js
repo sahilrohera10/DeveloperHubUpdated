@@ -10,7 +10,8 @@ const Domain = require("../Controllers/Domain");
 //user Registration
 // router.post("/Registration",Register.Registration);
 router.post("/email-activate",ActivateAccount.ActivateAccount);
-router.post("/UniversityRegistratio" , Register.UniversityRegistration);
+router.post("/UniversityRegistration" , Register.UniversityRegistration);
+router.post("/ITRegistration" , Register.ITRegistration);
 
 //User Authorization
 router.post("/Login", Authorization.userLogin);

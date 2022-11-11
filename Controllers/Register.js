@@ -1,66 +1,81 @@
 const express = require("express");
-const StudentModel = require("../Models/StudentModel");
-const CPModel = require("../Models/CPModel");
-const RegisterModel = require("../Models/UserMetaModel");
+// const StudentModel = require("../Models/StudentModel");
+// const CPModel = require("../Models/CPModel");
+const UserMetaModel = require("../Models/UserMetaModel");
 const UniversityModel = require("../Models/UniversityModel");
 const baseRepo = require("../Repository/baseRepository");
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
 const { mongoose } = require("mongoose");
 const { ObjectId } = require("mongodb");
+const nodemailer = require("nodemailer");
 //mailgun 
 const mailgun = require("mailgun-js");
 const DOMAIN = 'sandbox53616e3e6453441ebd344297b4910df4.mailgun.org';
 const mg = mailgun({ apiKey: process.env.MAILGUN_APIKEY, domain: DOMAIN });
 const jwt = require('jsonwebtoken');
+const ITSoftwareModel = require("../Models/ITSoftwareModel");
 
 module.exports = {
   
   ActivateAccount,
-  UniversityRegistration
+  UniversityRegistration,
+  ITRegistration
 };
 
 
 async function UniversityRegistration(req, res) {
   const body = req.body;
-  const Name = body.name;
-  const Phone = body.phone;
+  const Name = body.UniversityName;
+  const Phone = body.UniversityPhone;
   const Role = body.Role;
  
   try {
-    const user = await RegisterModel.findOne({ emailId: body.email });
+    const user = await UserMetaModel.findOne({ email: body.email });
     if (user) {
-      return res.status(400).json("User Already Exist");
+      console.log("user=>" , user)
+      return res.status(200).json("User Already Exist");
     }
+    const MetaBody = ["email"];
     const UniversitymodelField = [
-      "University",
-      "CnName",
-      "ReposManager",
+      "UniversityName",
+      "UniversityPhone",
+      "City",
+      "State",
+      "Country",
+      "ReposManagerName",
+      "ReposManagerEmail",
+      "ReposManagerDesignation",
+      "ReposManagerContactNo",
+      "ReposManagerDepartment",
       "TraineeQualification",
       "TotalTraineeNo",
       "startDate",
       "endDate",
-      "trainTheTrainer",
+      // "trainTheTrainer",
       "PreRequisite",
       "Courses",
       "TrainingMode",
       "ProjectType",
       "TrainingMedia",
-      "ActiveAwareness",
+      "ActivateAwareness",
       "Certification",
       "PanImage",
       "AadharImage"
     ];
-    const userName = Name.FN.slice(0, 3) + Phone.slice(0, 4);
-    const userPassword = Role.slice(0, 3) + Name.FN;
+    console.log("name:", Name);
+    console.log("Phone:", Phone);
+    console.log("Phone.slice : " , Phone.slice(0,4));
+    const userName = Name.slice(0, 3) + Phone.slice(0, 3);
+    console.log("UserName : " , userName);
+    const userPassword = Role.slice(0, 3) + Name;
     const salt = await bcrypt.genSalt(10);
     const Secpassword = await bcrypt.hash(userPassword, salt);
 
-    let Phasebody;
+    let Phasebody = _.pick(body , MetaBody);
     Phasebody.userName = userName;
     Phasebody.userPassword = Secpassword;
-    Phasebody.emailId = body.email;
-    const userMetaDetails = await baseRepo.baseCreate(RegisterModel, Phasebody);
+    const userMetaDetails = await baseRepo.baseCreate(UserMetaModel, Phasebody);
 
 
     let Phase2body = _.pick(body, UniversitymodelField);
@@ -68,29 +83,181 @@ async function UniversityRegistration(req, res) {
     await baseRepo.baseCreate(UniversityModel, Phase2body);
 
 
-    const token = jwt.sign({ Name, email }, process.env.JWT_ACC_ACTIVATE, { expiresIn: '20m' })
+    // const token = jwt.sign({ Name, Role }, process.env.JWT_ACC_ACTIVATE, { expiresIn: '20m' })
 
-    const data = {
-      from: 'noreply@crossteam.com',
-      to: body.email,
-      subject: 'Account Activation Link',
-      html: `
-              <h2>Please click on the given link to activate your account</h2>
-              <div><h4> Your User name is <i>${userName}</i> and password is <i>${userPassword}</i> </h4></div>
-              <p>${process.env.CLIENT_URL}/authentication/activate/${token}</p>
-          `
-    };
-    mg.messages().send(data, function (error, body) {
-      if (error) {
-        return res.json({
-          error: error.message
-        })
-      }
-      return res.json({
-        message: 'Email has been sent, kindly activate your account'
-      })
-    });
+    // const data = {
+    //   from: 'noreply@crossteam.com',
+    //   to: body.email,
+    //   subject: 'Account Activation Link',
+    //   html: `
+    //           <h2>Please click on the given link to activate your account</h2>
+    //           <div><h4> Your User name is <i>${userName}</i> and password is <i>${userPassword}</i> </h4></div>
+    //           <p>${process.env.CLIENT_URL}/authentication/activate/${token}</p>
+    //       `
+    // };
+    // mg.messages().send(data, function (error, body) {
+    //   if (error) {
+    //     return res.json({
+    //       error: error.message
+    //     })
+    //   }
+    //   return res.json({
+    //     message: 'Email has been sent, kindly activate your account'
+    //   })
+    // });
+    
+    // const tranporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   host: "smtp.gmail.com",
+    //   auth: {
+    //     user: "sahilaroraji2002@gmail.com",
+    //     pass: "iuppwqxpqnkoithv",
+    //   },
+    // });
 
+    // const mailOptions = {
+    //   from: "sahilaroraji2002@gmail.com",
+    //   to: req.body.email,
+    //   subject: 'Account Activation Link',
+    //   html: `
+    //   //           <h2>Please click on the given link to activate your account</h2>
+    //   //           <div><h4> Your User name is <i>${userName}</i> and password is <i>${userPassword}</i> </h4></div>
+    //   //           <p>${process.env.CLIENT_URL}/authentication/activate/${token}</p>
+    //   //       `
+    // };
+
+    // tranporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     console.log(error);
+    //     res.send("error");
+    //   } else {
+    //     console.log("send");
+    //     res.send("success");
+    //   }
+    // });
+
+    return res.status(200).json({ message: "success" });
+
+
+
+  } catch (err) {
+    console.log("Error=>", err);
+    return res.status(400).json({ message: err });
+  }
+}
+async function ITRegistration(req, res) {
+  const body = req.body;
+  const Name = body.ITName;
+  const Phone = body.ITPhone;
+  const Role = body.Role;
+ 
+  try {
+    const user = await UserMetaModel.findOne({ email: body.email });
+    if (user) {
+      console.log("user=>" , user)
+      return res.status(300).json("User Already Exist");
+    }
+    const MetaBody = ["email"];
+    const ITmodelField = [
+      "ITName",
+      "ITPhone",
+      "City",
+      "State",
+      "Country",
+      // "ReposManagerName",
+      // "ReposManagerEmail",
+      // "ReposManagerDesignation",
+      // "ReposManagerContactNo",
+      // "ReposManagerDepartment",
+      // "TraineeQualification",
+      // "TotalTraineeNo",
+      // "startDate",
+      // "endDate",
+      // "trainTheTrainer",
+      "PreRequisite",
+      "Courses",
+      "TrainingMode",
+      "ProjectType",
+      "TrainingMedia",
+      "ActivateAwareness",
+      "Certification",
+      "PanImage",
+      "AadharImage"
+    ];
+    console.log("name:", Name);
+    console.log("Phone:", Phone);
+    // console.log("Phone.slice : " , Phone.slice(0,4));
+    const userName = Name.slice(0, 3) + Phone.slice(0, 3);
+    console.log("UserName : " , userName);
+    const userPassword = Role.slice(0, 3) + Name;
+    const salt = await bcrypt.genSalt(10);
+    const Secpassword = await bcrypt.hash(userPassword, salt);
+
+    let Phasebody = _.pick(body , MetaBody);
+    Phasebody.userName = userName;
+    Phasebody.userPassword = Secpassword;
+    const userMetaDetails = await baseRepo.baseCreate(UserMetaModel, Phasebody);
+
+
+    let Phase2body = _.pick(body, ITmodelField);
+    Phase2body.userMetaId = userMetaDetails._id;
+    await baseRepo.baseCreate(ITSoftwareModel, Phase2body);
+
+
+    // const token = jwt.sign({ Name, Role }, process.env.JWT_ACC_ACTIVATE, { expiresIn: '20m' })
+
+    // const data = {
+    //   from: 'noreply@crossteam.com',
+    //   to: body.email,
+    //   subject: 'Account Activation Link',
+    //   html: `
+    //           <h2>Please click on the given link to activate your account</h2>
+    //           <div><h4> Your User name is <i>${userName}</i> and password is <i>${userPassword}</i> </h4></div>
+    //           <p>${process.env.CLIENT_URL}/authentication/activate/${token}</p>
+    //       `
+    // };
+    // mg.messages().send(data, function (error, body) {
+    //   if (error) {
+    //     return res.json({
+    //       error: error.message
+    //     })
+    //   }
+    //   return res.json({
+    //     message: 'Email has been sent, kindly activate your account'
+    //   })
+    // });
+    
+    // const tranporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   host: "smtp.gmail.com",
+    //   auth: {
+    //     user: "sahilaroraji2002@gmail.com",
+    //     pass: "iuppwqxpqnkoithv",
+    //   },
+    // });
+
+    // const mailOptions = {
+    //   from: "sahilaroraji2002@gmail.com",
+    //   to: req.body.email,
+    //   subject: 'Account Activation Link',
+    //   html: `
+    //   //           <h2>Please click on the given link to activate your account</h2>
+    //   //           <div><h4> Your User name is <i>${userName}</i> and password is <i>${userPassword}</i> </h4></div>
+    //   //           <p>${process.env.CLIENT_URL}/authentication/activate/${token}</p>
+    //   //       `
+    // };
+
+    // tranporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     console.log(error);
+    //     res.send("error");
+    //   } else {
+    //     console.log("send");
+    //     res.send("success");
+    //   }
+    // });
+
+    return res.status(200).json({ message: "success" });
 
 
 

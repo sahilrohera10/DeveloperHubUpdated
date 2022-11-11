@@ -1,53 +1,56 @@
-const mongoose= require('mongoose')
+const mongoose = require('mongoose')
+const { ObjectId } = require("mongodb");
 
 
 const ITSoftwareSchema = mongoose.Schema({
-    
-    userMetaId:{
-        type:ObjectId
+
+    userMetaId: {
+        type: ObjectId
     },
-    ITName:{ 
-        type:String,
+    ITName: {
+        type: String,
     },
-    ITEmail:{ 
-        type:String,
+
+    ITPhone: {
+        type: String,
     },
-    ITPhone:{ 
-        type:Number,
+     City: {
+        type: String,
     },
-    CnName:{
-        type:Object,
+    State: {
+        type: String,
     },
-    // Qualification:{
-    //     type:String
-    // },
-    preRequisite:{
-        type:String
+    Country: {
+        type: String,
     },
-    Course:{
-        type:[String]
+   
+    preRequisite: {
+        type: String
     },
-    TrainingMode:{
-        type:String
+    Courses: {
+        type: [String]
     },
-    ProjectType:{
-        type:String
+    TrainingMode: {
+        type: String
     },
-    TrainingMedia:{
-        type:[Array]
+    ProjectType: {
+        type: String
     },
-    ActivateAwareness:{
-        type:Boolean
+    TrainingMedia: {
+        type: [String]
     },
-    Certification:{
-        type:Boolean
+    ActivateAwareness: {
+        type: Boolean
     },
-    PanImage:{
-        type:String
+    Certification: {
+        type: Boolean
     },
-    AadharImage:{
-        type:String
+    PanImage: {
+        type: String
     },
-    
+    AadharImage: {
+        type: String
+    },
+
 })
-module.exports= mongoose.model('ITSoftwareModel',ITSoftwareSchema);
+module.exports = mongoose.model('ITSoftwareModel', ITSoftwareSchema);
