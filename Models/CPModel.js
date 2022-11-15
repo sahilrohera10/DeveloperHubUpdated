@@ -2,17 +2,20 @@ const mongoose = require('mongoose')
 const { ObjectId } = require("mongodb");
 
 
-const ITSoftwareSchema = mongoose.Schema({
+const CPModelSchema = mongoose.Schema({
 
     userMetaId: {
         type: ObjectId
     },
-    ITName: {
+    CPName: {
         type: String,
     },
 
-    ITPhone: {
+    CPEmail: {
         type: String,
+    },
+    CP_Phone:{
+        type:Number
     },
     City:{
         type:String
@@ -23,6 +26,7 @@ const ITSoftwareSchema = mongoose.Schema({
     Country:{
         type:String
     },
+
     preRequisite: {
         type: String
     },
@@ -52,4 +56,4 @@ const ITSoftwareSchema = mongoose.Schema({
     },
 
 })
-module.exports = mongoose.model('ITSoftwareModel', ITSoftwareSchema);
+module.exports = mongoose.model('CPModel', CPModelSchema);

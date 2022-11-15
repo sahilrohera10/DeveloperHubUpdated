@@ -1,5 +1,5 @@
 const express = require("express");
-const RegisterModel = require("../Models/UserMetaModel");
+const userMetaModel = require("../Models/UserMetaModel");
 
 // const userModel = require("../Models/RegisterModel");
 // const userMetaModel = require("../Models/RegisterMeta");
@@ -26,7 +26,7 @@ async function userLogin(req,res,next){
     
     try{
     
-    let userdata = await RegisterModel.findOne({userName:body.userName});
+    let userdata = await userMetaModel.findOne({userName:body.userName});
     // console.log("User =",usermeta);
     if(!userdata){
       return res.status(400).json({message:"Incorrect Details",status:400});

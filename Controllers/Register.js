@@ -34,9 +34,9 @@ async function UniversityRegistration(req, res) {
     const user = await UserMetaModel.findOne({ email: body.email });
     if (user) {
       console.log("user=>" , user)
-      return res.status(200).json("User Already Exist");
+      return res.status(300).json("User Already Exist");
     }
-    const MetaBody = ["email"];
+    const MetaBody = ["email" ];
     const UniversitymodelField = [
       "UniversityName",
       "UniversityPhone",
@@ -52,7 +52,6 @@ async function UniversityRegistration(req, res) {
       "TotalTraineeNo",
       "startDate",
       "endDate",
-      // "trainTheTrainer",
       "PreRequisite",
       "Courses",
       "TrainingMode",
@@ -164,16 +163,6 @@ async function ITRegistration(req, res) {
       "City",
       "State",
       "Country",
-      // "ReposManagerName",
-      // "ReposManagerEmail",
-      // "ReposManagerDesignation",
-      // "ReposManagerContactNo",
-      // "ReposManagerDepartment",
-      // "TraineeQualification",
-      // "TotalTraineeNo",
-      // "startDate",
-      // "endDate",
-      // "trainTheTrainer",
       "PreRequisite",
       "Courses",
       "TrainingMode",

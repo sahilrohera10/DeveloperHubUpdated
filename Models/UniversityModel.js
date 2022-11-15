@@ -1,25 +1,25 @@
 const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
-const universitySchema=mongoose.Schema({
+const universitySchema = mongoose.Schema({
     userMetaId:{
-        type:ObjectId
+        type:ObjectId,
     },
+
     UniversityName:{ 
         type:String,
 
     },
-   
     UniversityPhone:{ 
         type:Number,
     },
     City:{
-        type:String,
+        type:String
     },
     State:{
-        type:String,
+        type:String
     },
     Country:{
-        type:String,
+        type:String
     },
     ReposManagerName:{
         type:String,
@@ -58,7 +58,7 @@ const universitySchema=mongoose.Schema({
         type:[String]
     },
     TrainingMode:{
-        type:String
+        
     },
     ProjectType:{
         type:String

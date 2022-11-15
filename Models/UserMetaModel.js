@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 const { ObjectId } = require('mongodb');
 const userMetaSchema=mongoose.Schema({
-   
-  
     email:{
         type:String
     },
+   
     userName:{
         type:String
     },
