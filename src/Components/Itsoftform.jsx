@@ -75,7 +75,7 @@ const Itsoftform = () => {
       }
       const [type, setType] = React.useState("");
       const [isVisible, setIsVisible] = React.useState(1);
-      const [name, setName] = React.useState();
+      
     
       const [value1, setvalue1] = React.useState("");
       const [value2, setvalue2] = React.useState("");
@@ -179,6 +179,64 @@ const Itsoftform = () => {
       const theme = useTheme();
       const [personName1, setPersonName1] = React.useState([]);
       const [personName2, setPersonName2] = React.useState([]);
+
+      //IT Soft Form
+
+      // const [name, setName] = React.useState();
+      const [name, setName] = React.useState();
+      const [email, setEmail] = React.useState();
+      const [phone, setPhone] = React.useState();
+      const [city, setCity] = React.useState();
+      const [state, setState] = React.useState();
+      const [country, setCountry] = React.useState();
+      const [prerequisite, setPrerequisite] = React.useState();
+      const [training, setTraining] = React.useState();
+      const [projectType, setProjectType] = React.useState();
+      const [activeAwareness, setActiveAwareness] = React.useState();
+
+      const register = async () => {
+        try {
+          const body = {
+            ITName: name,
+            Role: "ItSoftware",
+            ITPhone: phone,
+            email: email,
+            City: city,
+            State: state,
+            Country: country,
+            PreRequisite:prerequisite,
+            Courses: ["AI/ML", "AR/VR"],
+            TrainingMode: training,
+            ProjectType:projectType,
+            TrainingMedia: ["Audio", "Video"],
+            ActivateAwareness: 1,
+            Certification:1,
+            PanImage:"",
+            AadharImage:"",
+          };
+    
+          const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          };
+    
+          const resp = await fetch(
+            "http://localhost:3301/ITRegistration",
+            requestOptions
+          );
+    
+          if (resp.status === 200) {
+            alert("register success");
+          }
+          if (resp.status === 300) {
+            alert("user Already registered");
+          }
+        } catch (error) {
+          console.log("error=>", error);
+          alert("error");
+        }
+      };
   return (
     <div className="formMainDiv">
     <div className='IT_container'>
@@ -192,6 +250,7 @@ const Itsoftform = () => {
               label="Name"
               variant="outlined"
               value={name}
+              onChange={(e) => setName(e.target.value)}
               style={{
                 marginRight: "50px",
                 width: "250px",
@@ -202,6 +261,8 @@ const Itsoftform = () => {
               id="outlined-basic"
               label="Email"
               variant="outlined"
+              value={email}
+                onChange={(e) => setEmail(e.target.value)}
               style={{ width: "250px" }}
             />
           </div>
@@ -210,8 +271,8 @@ const Itsoftform = () => {
               id="outlined-basic"
               label="Phone"
               variant="outlined"
-              // value={name}
-              // onChange={(e) => setName(e.target.value)}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               style={{
                 marginRight: "50px",
                 width: "250px",
@@ -222,6 +283,8 @@ const Itsoftform = () => {
               id="outlined-basic"
               label="City"
               variant="outlined"
+              value={city}
+                onChange={(e) => setCity(e.target.value)}
               style={{ width: "250px" }}
             />
           </div>
@@ -230,8 +293,8 @@ const Itsoftform = () => {
               id="outlined-basic"
               label="State"
               variant="outlined"
-              // value={name}
-              // onChange={(e) => setName(e.target.value)}
+              value={state}
+              onChange={(e) => setState(e.target.value)}
               style={{
                 marginRight: "50px",
                 width: "250px",
@@ -242,6 +305,8 @@ const Itsoftform = () => {
               id="outlined-basic"
               label="Country"
               variant="outlined"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
               style={{ width: "250px" }}
             />
           </div>
@@ -259,27 +324,26 @@ const Itsoftform = () => {
              <div className='IT_form_container'>
               <div className="input_box">
              <div className="input-box1">
-                      <FormControl sx={{ minWidth: 300, marginTop: 1 }}>
-                        <InputLabel id="demo-controlled-open-select-label">
-                          Pre-requisite
-                        </InputLabel>
-                        <Select
-                          labelId="demo-controlled-open-select-label"
-                          id="demo-controlled-open-select"
-                          open={open1}
-                          onClose={handleClose1}
-                          onOpen={handleOpen1}
-                          value={value1}
-                          label="Pre-requisite"
-                          onChange={handleChange3}
-                        >
-                          <MenuItem value=""></MenuItem>
-                          <MenuItem value="python">Python</MenuItem>
-                          <MenuItem value="js">JavaScript</MenuItem>
-                          <MenuItem value="both">Both</MenuItem>
-                          <MenuItem value="none">None</MenuItem>
-                        </Select>
-                      </FormControl>
+             <FormControl
+                sx={{ minWidth: 300, marginTop: 1 }}
+                className="uniInput"
+              >
+                <InputLabel id="demo-simple-select-label">
+                  Pre-Requisite
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="outlined-basic"
+                  value={prerequisite}
+                  label="Pre-requisite"
+                  onChange={(e) => setPrerequisite(e.target.value)}
+                >
+                  <MenuItem value="UG">Python</MenuItem>
+                  <MenuItem value="PG">Javascript</MenuItem>
+                  <MenuItem value="PG">Both</MenuItem>
+                  <MenuItem value="PG">None</MenuItem>
+                </Select>
+              </FormControl>
                       <FormControl sx={{ width: 300, marginTop: 1 }}>
                         <InputLabel id="demo-multiple-chip-label">
                           Course
@@ -324,45 +388,45 @@ const Itsoftform = () => {
                       </FormControl>
                     </div>
                     <div className="input-box1">
-                      <FormControl sx={{ minWidth: 300, marginTop: 1 }}>
-                        <InputLabel id="demo-controlled-open-select-label">
-                          Training Mode
-                        </InputLabel>
-                        <Select
-                          labelId="demo-controlled-open-select-label"
-                          id="demo-controlled-open-select"
-                          open={open2}
-                          onClose={handleClose2}
-                          onOpen={handleOpen2}
-                          value={value2}
-                          label="Training Mode"
-                          onChange={handleChange4}
-                        >
-                          <MenuItem value=""></MenuItem>
-                          <MenuItem value="Online">Online</MenuItem>
-                          <MenuItem value="Offline">Offline</MenuItem>
-                        </Select>
-                      </FormControl>
+                    <FormControl
+                sx={{ minWidth: 300, marginTop: 1 }}
+                className="uniInput"
+              >
+                <InputLabel id="demo-simple-select-label">
+                  Training Mode
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="outlined-basic"
+                  value={training}
+                  label="training-mode"
+                  onChange={(e) => setTraining(e.target.value)}
+                >
+                  <MenuItem value="UG">Online</MenuItem>
+                  <MenuItem value="PG">Offline</MenuItem>
+                
+                </Select>
+              </FormControl>
                   
-                      <FormControl sx={{ minWidth: 300, marginTop: 1 }}>
-                        <InputLabel id="demo-controlled-open-select-label">
-                          Project Type
-                        </InputLabel>
-                        <Select
-                          labelId="demo-controlled-open-select-label"
-                          id="demo-controlled-open-select"
-                          open3={open3}
-                          onClose={handleClose3}
-                          onOpen={handleOpen3}
-                          value={value3}
-                          label="Project Type"
-                          onChange={handleChange5}
-                        >
-                          <MenuItem value=""></MenuItem>
-                          <MenuItem value="python">Live </MenuItem>
-                          <MenuItem value="js">Simulator</MenuItem>
-                        </Select>
-                      </FormControl>
+              <FormControl
+                sx={{ minWidth: 300, marginTop: 1 }}
+                className="uniInput"
+              >
+                <InputLabel id="demo-simple-select-label">
+                  Project Type
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="outlined-basic"
+                  value={projectType}
+                  label="project-type"
+                  onChange={(e) => setProjectType(e.target.value)}
+                >
+                  <MenuItem value="UG">Live</MenuItem>
+                  <MenuItem value="PG">Simulator</MenuItem>
+                
+                </Select>
+              </FormControl>
                     </div>
                     <div className="input-box1">
                       <FormControl sx={{ width: 300, marginTop: 1 }}>
@@ -390,25 +454,25 @@ const Itsoftform = () => {
                         </Select>
                       </FormControl>
                
-                      <FormControl sx={{ minWidth: 300, marginTop: 1 }}>
-                        <InputLabel id="demo-controlled-open-select-label">
-                          Active Awareness
-                        </InputLabel>
-                        <Select
-                          labelId="demo-controlled-open-select-label"
-                          id="demo-controlled-open-select"
-                          open4={open4}
-                          onClose={handleClose4}
-                          onOpen={handleOpen4}
-                          value={value4}
-                          label="Active Awareness"
-                          onChange={handleChange6}
-                        >
-                          <MenuItem value=""></MenuItem>
-                          <MenuItem value="python">Yes </MenuItem>
-                          <MenuItem value="js">No</MenuItem>
-                        </Select>
-                      </FormControl>
+                      <FormControl
+                sx={{ minWidth: 300, marginTop: 1 }}
+                className="uniInput"
+              >
+                <InputLabel id="demo-simple-select-label">
+                  Active Awareness
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="outlined-basic"
+                  value={activeAwareness}
+                  label="active awareness"
+                  onChange={(e) => setActiveAwareness(e.target.value)}
+                >
+                  <MenuItem value="UG">Yes</MenuItem>
+                  <MenuItem value="PG">No</MenuItem>
+                
+                </Select>
+              </FormControl>
                     </div>
                   <div className="gender-details">
                     <div className="category">
@@ -531,7 +595,7 @@ const Itsoftform = () => {
                 <Button
                   style={{ width: "100px" }}
                   variant="contained"
-                  onClick={() => handleNext()}
+                  onClick={() => register()}
                 >
                   Submit
                 </Button>
