@@ -1,11 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./Components/Footer";
 import SideBar from "./Components/SideBar";
 import DashboardPage from "./Pages/DashboardPage";
-import PendingApplicationPage from "./Pages/PendingApplicationPage";
-import ReviewedApplicationPage from "./Pages/ReviewedApplicationPage";
-import ServicesPage from "./Pages/ServicesPage";
+import Courses from "./Pages/Courses";
+import Profile from "./Pages/Profile";
+import Lectures from "./Pages/Lecture";
 
 function App() {
   return (
@@ -15,12 +14,9 @@ function App() {
         <Routes>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="pending-requests" element={<PendingApplicationPage />} />
-          <Route
-            path="reviewed-requests"
-            element={<ReviewedApplicationPage />}
-          />
+          <Route path="/lectures" element={<Lectures />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
       {/* <Footer /> */}

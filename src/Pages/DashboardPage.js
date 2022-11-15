@@ -4,8 +4,6 @@ import { BsJournalBookmarkFill } from "react-icons/bs";
 import { MdOndemandVideo } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 
-import Footer from "../Components/Footer";
-import Graphs from "../Components/Graphs";
 // import NavBar from "../Components/NavBar";
 
 const listData = [
@@ -46,7 +44,7 @@ export default function DashboardPage() {
           marginLeft: "20px",
         }}
       >
-        WELCOME   TO   DASHBOARD
+        WELCOME TO DASHBOARD
       </p>
 
       <div style={{ display: "flex" }}>
@@ -123,7 +121,7 @@ export default function DashboardPage() {
                   textAlign: "center",
                 }}
               >
-                Total Courses 
+                Total Courses
               </p>{" "}
               <p
                 style={{
@@ -162,7 +160,7 @@ export default function DashboardPage() {
                   textAlign: "center",
                 }}
               >
-                Watched Lectures 
+                Watched Lectures
               </p>
               <p
                 style={{
@@ -201,7 +199,7 @@ export default function DashboardPage() {
                   textAlign: "center",
                 }}
               >
-                Submitted Assignments 
+                Submitted Assignments
               </p>{" "}
               <p
                 style={{
@@ -240,7 +238,7 @@ export default function DashboardPage() {
                 marginBottom: "10px",
                 display: "flex",
                 paddingBottom: "10px",
-              }}  
+              }}
             >
               <img
                 style={{

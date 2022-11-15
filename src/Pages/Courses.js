@@ -9,80 +9,80 @@ import Chip from "@mui/material/Chip";
 
 import { Button } from "@mui/material";
 
-export default function PendingApplicationPage() {
+export default function Courses() {
   const [finalData, setFinalData] = useState(null);
 
-  useEffect(() => {
-    try {
-      fetch("http://localhost:3322/GetPendingApplicationForm")
-        .then((resp) => resp.json())
-        .then((resp) => {
-          console.log("data=>", resp);
-          setFinalData(resp.data);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     fetch("http://localhost:3322/GetPendingApplicationForm")
+  //       .then((resp) => resp.json())
+  //       .then((resp) => {
+  //         console.log("data=>", resp);
+  //         setFinalData(resp.data);
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, []);
 
-  const handleSendResponse = async (data, msg) => {
-    // e.preventDefault();
+  // const handleSendResponse = async (data, msg) => {
+  //   // e.preventDefault();
 
-    const body = {
-      Email: data.email,
-      id: data._id,
-      message: msg,
-    };
-    console.log("body=>", body);
+  //   const body = {
+  //     Email: data.email,
+  //     id: data._id,
+  //     message: msg,
+  //   };
+  //   console.log("body=>", body);
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    };
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(body),
+  //   };
 
-    try {
-      const data = await fetch(
-        "http://localhost:3322/SendMailtoCustomer",
-        requestOptions
-      );
-      if (data.status) {
-        alert("Response added successfully");
-        fetch("http://localhost:3322/GetPendingApplicationForm")
-          .then((resp) => resp.json())
-          .then((resp) => {
-            console.log("data=>", resp);
-            setFinalData(resp.data);
-          });
-      }
-    } catch (error) {
-      alert("error", error);
-    }
-  };
+  //   try {
+  //     const data = await fetch(
+  //       "http://localhost:3322/SendMailtoCustomer",
+  //       requestOptions
+  //     );
+  //     if (data.status) {
+  //       alert("Response added successfully");
+  //       fetch("http://localhost:3322/GetPendingApplicationForm")
+  //         .then((resp) => resp.json())
+  //         .then((resp) => {
+  //           console.log("data=>", resp);
+  //           setFinalData(resp.data);
+  //         });
+  //     }
+  //   } catch (error) {
+  //     alert("error", error);
+  //   }
+  // };
 
-  const handleRefresh = (e) => {
-    e.preventDefault();
-    fetch("http://localhost:3322/GetPendingApplicationForm")
-      .then((resp) => resp.json())
-      .then((resp) => {
-        console.log("data=>", resp);
-        setFinalData(resp.data);
-      });
-  };
+  // const handleRefresh = (e) => {
+  //   e.preventDefault();
+  //   fetch("http://localhost:3322/GetPendingApplicationForm")
+  //     .then((resp) => resp.json())
+  //     .then((resp) => {
+  //       console.log("data=>", resp);
+  //       setFinalData(resp.data);
+  //     });
+  // };
 
   return (
     <div>
       <p style={{ fontSize: "30px", fontWeight: "500", marginLeft: "20px" }}>
-        Pending Requests
+        Courses
       </p>
       <button
         style={{ color: "black", marginLeft: "1150px" }}
-        onClick={(e) => handleRefresh(e)}
+        // onClick={(e) => handleRefresh(e)}
       >
         Refresh
       </button>
       {/* <ApplicationsAccordion data={finalData} /> */}
-      <div style={{ marginTop: "70px" }}>
+      {/* <div style={{ marginTop: "70px" }}>
         {finalData &&
           finalData.map((data) => (
             <Accordion
@@ -184,7 +184,7 @@ export default function PendingApplicationPage() {
               </AccordionDetails>
             </Accordion>
           ))}
-      </div>
+      </div> */}
     </div>
   );
 }
