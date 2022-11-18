@@ -183,78 +183,8 @@ const ChannelForm = () => {
       <div className="soft_heading">
       Channel Partner
       </div>
-      {isVisible===1 ? (<>
-        <div style={{ marginTop: "20px" }}>
-            <TextField
-              id="outlined-basic"
-              label="Name"
-              variant="outlined"
-              value={name}
-              style={{
-                marginRight: "50px",
-                width: "250px",
-                marginBottom: "20px",
-              }}
-            />
-            <TextField
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              style={{ width: "250px" }}
-            />
-          </div>
-          <div style={{ marginTop: "20px" }}>
-            <TextField
-              id="outlined-basic"
-              label="Phone"
-              variant="outlined"
-              // value={name}
-              // onChange={(e) => setName(e.target.value)}
-              style={{
-                marginRight: "50px",
-                width: "250px",
-                marginBottom: "20px",
-              }}
-            />
-            <TextField
-              id="outlined-basic"
-              label="City"
-              variant="outlined"
-              style={{ width: "250px" }}
-            />
-          </div>
-          <div style={{ marginTop: "20px" }}>
-            <TextField
-              id="outlined-basic"
-              label="State"
-              variant="outlined"
-              // value={name}
-              // onChange={(e) => setName(e.target.value)}
-              style={{
-                marginRight: "50px",
-                width: "250px",
-                marginBottom: "20px",
-              }}
-            />
-            <TextField
-              id="outlined-basic"
-              label="Country"
-              variant="outlined"
-              style={{ width: "250px" }}
-            />
-          </div>
-          <div className="btnDiv1">
-            <Button
-              style={{ width: "200px", marginBottom: "20px" }}
-              variant="contained"
-              onClick={() => handleNext()}
-            >
-              Ok & Next
-            </Button>
-          </div>
-      </>):<></>}
-
-      {isVisible==2?(
+    
+      {isVisible==1?(
           <>
                 
                   <div className="user-details">
@@ -585,25 +515,18 @@ const ChannelForm = () => {
                       </Dialog>
                     </div>
                   </div>
-                  <div className="btnDiv">
-                <Button
-                  style={{ width: "200px", marginBottom: "20px" }}
-                  variant="contained"
-                  onClick={() => handleBack()}
-                >
-                  Back
-                </Button>
-                <Button
-                  style={{ width: "200px", marginBottom: "20px" }}
-                  variant="contained"
-                  onClick={() => handleNext()}
-                >
-                  Next
-                </Button>
-              </div>
+                  <div className="btnDiv1">
+            <Button
+              style={{ width: "200px", marginBottom: "20px" }}
+              variant="contained"
+              onClick={() => handleNext()}
+            >
+              Ok & Next
+            </Button>
+          </div>
           </>):(<></>)}
 
-          {isVisible===3?(<> <div>
+          {isVisible===2?(<> <div>
               <h2>{type}</h2>
               <TextField id="outlined-basic" label="OTP" variant="outlined" />
               <Button variant="contained" className="otpBtn">
@@ -637,7 +560,7 @@ const ChannelForm = () => {
                   Submit
                 </Button>
               </div>
-            </div></>):isVisible===4?(<>
+            </div></>):isVisible===3?(<>
             <div className="thankupage">
               <i><b>Thank you for signing up !</b></i>
               <span> Please check your email for all further details it will recieve within 24 hours.</span>
